@@ -7,8 +7,16 @@
     </head>
     <body>
         <h1>Kalkulator walut</h1>
-        {% for a in kursy %}
-        <p>{{a['nazwa']}}</p>
-        {% endfor %}
+        <label for="waluta">Wybierz walutę:</label>
+        <form method="POST" action="/calc">
+        <select name="kody">
+            {% for kod in kursy %}
+           <option value="{{kod['nazwa']}}">{{kod['nazwa']}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="ile">Ile waluty chcesz zakupić?</label><br>
+            <input type="text" id="ile" name="ile">
+            <input type="submit" value="Przelicz">
+        </form>
     </body>
 </html>
