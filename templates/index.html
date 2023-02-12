@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
+        <title>Kalkulator walut</title>
+    </head>
+    <body>
+        <h1>Kalkulator walut</h1>
+        {% for a in kursy %}
+        <p>{{a['nazwa']}}</p>
+        {% endfor %}
+    </body>
+</html>
