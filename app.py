@@ -1,7 +1,7 @@
 import requests
 import csv
 from flask import Flask
-from flask import render_template, redirect, request
+from flask import render_template, request
 
 response = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
 data = response.json()
@@ -31,4 +31,5 @@ def calc():
     for sss in kursy:
         if sss['nazwa'] == kodw:
             koszt = float(sss['kurs'])*int(ilew)
-            return f"<p>Koszt zakupu wynosi {round(koszt, 2)} PLN</p>"
+            wynik = f"Koszt zakupu wynosi {round(koszt, 2)} PLN"
+        return render_template("index.html", kursy = kursy, wynik = wynik)
